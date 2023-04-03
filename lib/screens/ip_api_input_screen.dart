@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:ip_api/utilities/constants.dart';
-import 'package:ip_api/screens/resul_page.dart';
+import 'package:ip_api/screens/result_page.dart';
 import 'package:ip_api/services/ip_api_output.dart';
 import 'package:ip_api/services/alert.dart';
 
