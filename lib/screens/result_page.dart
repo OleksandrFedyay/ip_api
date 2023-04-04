@@ -58,7 +58,7 @@ class _ResultPageState extends State<ResultPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('IP API'),
+        title: kAppBarTitle,
       ),
       body: SafeArea(
         child: Column(
@@ -68,8 +68,9 @@ class _ResultPageState extends State<ResultPage> {
               flex: 5,
               child: Container(
                 decoration: kResultBoxDecoration,
-                constraints: BoxConstraints.expand(width: double.infinity),
-                margin: EdgeInsets.all(15),
+                constraints:
+                    const BoxConstraints.expand(width: double.infinity),
+                margin: const EdgeInsets.all(15),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -77,11 +78,11 @@ class _ResultPageState extends State<ResultPage> {
                     ResultPageTextCard(
                         textResultLabel: firstResultTextFieldLabel,
                         textResult: firstResultTextField),
-                    SizedBox(height: 10),
+                    const SizedBox(height: 10),
                     ResultPageTextCard(
                         textResultLabel: secondResultTextFieldLabel,
                         textResult: secondResultTextField),
-                    SizedBox(height: 10),
+                    const SizedBox(height: 10),
                     ResultPageTextCard(
                         textResultLabel: thirdResultTextFieldLabel,
                         textResult: thirdResultTextField),
@@ -89,15 +90,15 @@ class _ResultPageState extends State<ResultPage> {
                 ),
               ),
             ),
-            Container(
+            SizedBox(
               width: double.infinity,
               child: TextButton(
                 onPressed: () {
                   Navigator.pop(context);
                 },
                 style: TextButton.styleFrom(
-                  padding: EdgeInsets.all(20),
-                  backgroundColor: Color(0xFFFFBB47),
+                  padding: const EdgeInsets.all(20),
+                  backgroundColor: const Color(0xFFFFBB47),
                   elevation: 15,
                   shape: const RoundedRectangleBorder(
                     borderRadius: BorderRadius.all(

@@ -3,7 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:ip_api/utilities/constants.dart';
 
 class ErrorAlert {
-  buildAlert(BuildContext context) {
+  ErrorAlert({required this.context});
+  final BuildContext context;
+
+  buildAlert() {
     return Alert(
       style: kAlertStyle,
       context: context,

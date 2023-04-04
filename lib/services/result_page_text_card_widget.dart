@@ -15,6 +15,7 @@ class ResultPageTextCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Container(
           padding: EdgeInsets.all(5),
@@ -27,7 +28,7 @@ class ResultPageTextCard extends StatelessWidget {
             style: kTextFieldLabelStyle,
           ),
         ),
-        Text(textResult, style: kTextFieldStyle),
+        Text(textResult, style: kTextFieldStyle, maxLines: 3),
       ],
     );
   }

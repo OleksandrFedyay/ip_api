@@ -16,17 +16,18 @@ class _IpApiInputScreenState extends State<IpApiInputScreen> {
   final _formKey = GlobalKey<FormState>();
   final FilteringTextInputFormatter inputFilteringFormattingAllowenses =
       FilteringTextInputFormatter.allow(
-    RegExp('[0-9\\:\\.]'),
+    RegExp('[a-fA-F0-9:.]'),
   );
+  // a-f\\A-F\\0-9\\:\\.
   late String ipInput;
+
   @override
   Widget build(BuildContext context) {
     return Form(
       key: _formKey,
       child: Scaffold(
         appBar: AppBar(
-          title: const Text('IP API'),
-          titleTextStyle: const TextStyle(fontWeight: FontWeight.bold),
+          title: kAppBarTitle,
         ),
         body: SafeArea(
           child: Column(
@@ -39,7 +40,7 @@ class _IpApiInputScreenState extends State<IpApiInputScreen> {
                   inputFormatters: [
                     inputFilteringFormattingAllowenses,
                   ],
-                  style: const TextStyle(color: Colors.black),
+                  style: kTextFromFieldTextStyle,
                   decoration: kTextFieldDecoration,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
@@ -52,7 +53,7 @@ class _IpApiInputScreenState extends State<IpApiInputScreen> {
                   },
                 ),
               ),
-              SizedBox(height: 50),
+              const SizedBox(height: 50),
               TextButton(
                 onPressed: () async {
                   if (_formKey.currentState!.validate()) {
@@ -62,24 +63,27 @@ class _IpApiInputScreenState extends State<IpApiInputScreen> {
                         duration: Duration.zero,
                       ),
                     );
-                    var ipApiData = await IpApiOutput().getIpApiData(ipInput);
+                    var ipApiData =
+                        await IpApiOutput(query: ipInput).getIpApiData();
 
-                    if (ipApiData == null) {
-                      ErrorAlert().buildAlert(context).show();
+                    if (ipApiData == null && context.mounted) {
+                      ErrorAlert(context: context).buildAlert().show();
                       return;
                     }
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) =>
-                            ResultPage(ipApiResponse: ipApiData),
-                      ),
-                    );
+                    if (context.mounted) {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) =>
+                              ResultPage(ipApiResponse: ipApiData),
+                        ),
+                      );
+                    }
                   }
                 },
                 style: TextButton.styleFrom(
-                  padding: EdgeInsets.all(20),
-                  backgroundColor: Color(0xFFFFBB47),
+                  padding: const EdgeInsets.all(20),
+                  backgroundColor: const Color(0xFFFFBB47),
                   elevation: 15,
                   foregroundColor: Colors.pink,
                   shape: const RoundedRectangleBorder(

@@ -1,6 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 
+const kAppBarTitle = Text('IP API');
+
+const kAppBarTheme = AppBarTheme(
+  color: Color(0xFFFFBB47),
+  centerTitle: true,
+  titleTextStyle: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
+);
+
 //Style for the TextFormField from ip_api_screen
 const kTextFieldDecoration = InputDecoration(
   filled: true,
@@ -13,7 +21,7 @@ const kTextFieldDecoration = InputDecoration(
   hintText: "Enter your IP address",
   hintStyle: TextStyle(color: Colors.grey),
   errorStyle: TextStyle(fontSize: 20),
-  helperText: "Use only: 0-9, ' . ', ' : '",
+  helperText: "Use only: 'Aa-Ff', '0-9', ' . ', ' : '",
   helperStyle: TextStyle(fontSize: 17, color: Colors.white, letterSpacing: 2),
 );
 //Decoration for the Container widget from the ResultPage class (the result_page)
@@ -24,9 +32,16 @@ const kResultBoxDecoration = BoxDecoration(
   ),
 );
 
+//TextFromField text style
+const kTextFromFieldTextStyle = TextStyle(color: Colors.black);
+
 //Text style: Label and Field for result_page
-const kTextFieldLabelStyle = TextStyle(fontSize: 30, color: Colors.white);
-const kTextFieldStyle = TextStyle(fontSize: 25, color: Colors.white);
+const kTextFieldLabelStyle = TextStyle(
+  fontSize: 30,
+  color: Colors.white,
+);
+const kTextFieldStyle = TextStyle(
+    fontSize: 22, color: Colors.white, overflow: TextOverflow.ellipsis);
 
 //ErrorAlert style
 
